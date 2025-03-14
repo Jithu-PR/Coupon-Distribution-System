@@ -10,6 +10,7 @@ function ClaimCoupon() {
     setMessage('');
 
     try {
+      console.log(import.meta.env.VITE_API_URL);
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/coupon/claim-coupon`,
         null,
@@ -22,7 +23,7 @@ function ClaimCoupon() {
       if (error.response && error.response.status === 403) {
         setMessage(error.response.data.message);
       } else {
-        setMessage('Something went wrong. Please try again.');
+        setMessage('Something went wrong. Please try again.',console.log(import.meta.env.VITE_API_URL));
       }
     } finally {
       setLoading(false);
