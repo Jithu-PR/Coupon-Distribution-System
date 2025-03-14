@@ -1,5 +1,4 @@
-import ClaimCoupon from "./components/claimCoupon";
-
+import ClaimCoupon from './components/claimCoupon';
 
 function App() {
   return (
@@ -10,4 +9,3 @@ function App() {
 }
 
 export default App;
-
