@@ -10,7 +10,7 @@ function ClaimCoupon() {
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:3000/api/coupon/claim-coupon', null, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/coupon/claim-coupon`, null, {
         withCredentials: true,
       });
       setMessage(response.data.message);
