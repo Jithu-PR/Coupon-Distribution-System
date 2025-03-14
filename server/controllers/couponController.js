@@ -19,7 +19,7 @@ const claimCoupon = (req, res) => {
     const claimTimestamp = new Date();
     const userCookie = req.cookies['couponClaim'];
 
-    if (claimedUsers[userIp] && Date.now() - new Date(claimedUsers[userIp].timestamp).getTime() < COOLDOWN_TIME) {
+    if (claimedUsers[userIp] && (Date.now() - new Date(claimedUsers[userIp].timestamp).getTime()) < COOLDOWN_TIME) {
         
     return res.status(403).json({
         message: 'You need to wait for 1 hr before claiming another coupon.'
@@ -28,7 +28,7 @@ const claimCoupon = (req, res) => {
 
     if (userCookie && Date.now() - new Date(userCookie.timestamp).getTime() < COOLDOWN_TIME) {
     return res.status(403).json({
-        message: 'You need to wait for 1 hr before claiming another coupon.'
+        message: 'You need to wait for 1 hr before claiming another coupon!'
       });
     }
 

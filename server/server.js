@@ -27,4 +27,4 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/coupon', couponRouter)
 
-app.listen(PORT, () => console.log(`server is now running on port ${PORT}`));
+app.listen(PORT, () => console.log(`server is now running on port ${PORT, process.env.CLIENT_BASE_URL}`));
