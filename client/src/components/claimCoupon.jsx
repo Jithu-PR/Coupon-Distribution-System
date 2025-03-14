@@ -10,16 +10,17 @@ function ClaimCoupon() {
     setMessage('');
 
     try {
-      const response = await axios.post('/claim-coupon');
-      if (response.status === 200) {
-        const couponMessage = await response.text();
-        setMessage(couponMessage);
+      const response = await axios.post('http://localhost:3000/api/coupon/claim-coupon', null, {
+        withCredentials: true,
+      });
+      setMessage(response.data.message);
+
+    } catch (error) {  
+      if (error.response && error.response.status === 403) {
+        setMessage(error.response.data.message);
       } else {
-        const errorMessage = await response.text();
-        setMessage(errorMessage);
+        setMessage('Something went wrong. Please try again.');
       }
-    } catch (error) {
-      setMessage('Something went wrong, please try again.');
     } finally {
       setLoading(false);
     }
@@ -40,7 +41,7 @@ function ClaimCoupon() {
         </button>
 
         {message && (
-          <div className={`mt-4 text-center text-lg ${message.startsWith('You') ? 'text-green-500' : 'text-red-500'}`}>
+          <div className={`mt-4 text-center text-lg ${message.startsWith('Congratulations!') ? 'text-green-500' : 'text-red-500'}`}>
             {message}
           </div>
         )}
