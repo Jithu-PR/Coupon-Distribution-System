@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "npx vite preview",
     "format": "prettier --write ."
   },
   "dependencies": {
